@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Carbono</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌿 Calculadora de Carbono</h1>
+        
+        <!-- Seção: O que é uma Calculadora de Carbono -->
+        <div class="info-section">
+            <h3>📊 O que é uma Calculadora de Carbono?</h3>
+            <p>
+                A <strong>Calculadora de Carbono</strong> é uma ferramenta que permite estimar a quantidade 
+                de gases de efeito estufa (GEE) emitidos por suas atividades diárias. Ela converte 
+                seu consumo de energia, transporte e outros recursos em equivalentes de dióxido 
+                de carbono (CO₂), ajudando você a entender seu impacto ambiental.
+            </p>
+            
+            <div class="highlight">
+                <p><strong>Como funciona?</strong></p>
+                <p>
+                    A calculadora usa <strong>fatores de emissão</strong> - valores que representam a quantidade 
+                    de CO₂ equivalente emitida por unidade de consumo (ex: kWh de eletricidade, 
+                    litros de combustível, etc.).
+                </p>
+            </div>
+
+            <p><strong>Por que calcular sua pegada de carbono?</strong></p>
+            <ul>
+                <li>✅ Conscientizar sobre seu impacto ambiental</li>
+                <li>✅ Identificar oportunidades de redução</li>
+                <li>✅ Acompanhar seu progresso na sustentabilidade</li>
+                <li>✅ Tomar decisões mais conscientes no dia a dia</li>
+            </ul>
+        </div>
+
+        <!-- Seção do Formulário -->
+        <form method="POST" action="/">
+            <div>
+                <label for="eletricidade">Eletricidade (kWh):</label>
+                <input type="text" id="eletricidade" name="eletricidade" placeholder="Ex: 150">
+            </div>
+            <div>
+                <label for="gasolina">Gasolina (litros):</label>
+                <input type="text" id="gasolina" name="gasolina" placeholder="Ex: 45">
+            </div>
+            <div>
+                <label for="diesel">Diesel (litros):</label>
+                <input type="text" id="diesel" name="diesel" placeholder="Ex: 30">
+            </div>
+            <div>
+                <label for="gasNatural">Gás Natural (m³):</label>
+                <input type="text" id="gasNatural" name="gasNatural" placeholder="Ex: 20">
+            </div>
+            <div>
+                <label for="onibus">Ônibus (km):</label>
+                <input type="text" id="onibus" name="onibus" placeholder="Ex: 100">
+            </div>
+            <div>
+                <label for="metro">Metrô (km):</label>
+                <input type="text" id="metro" name="metro" placeholder="Ex: 50">
+            </div>
+            <div class="full-width">
+                <input type="submit" value="Calcular Pegada de Carbono">
+            </div>
+        </form>
+        
+        <!-- Resultados -->
+        <div class="resultados">
+            <h2>Carbono Eletricidade: {{carbonoEletricidade}} kg CO₂</h2>
+            <h2>Carbono Gasolina: {{carbonoGasolina}} kg CO₂</h2>
+            <h2>Carbono Diesel: {{carbonoDiesel}} kg CO₂</h2>
+            <h2>Carbono Gás Natural: {{carbonoGasNatural}} kg CO₂</h2>
+            <h2>Carbono Ônibus: {{carbonoOnibus}} kg CO₂</h2>
+            <h2>Carbono Metrô: {{carbonoMetro}} kg CO₂</h2>
+            <h2 class="total">Carbono Total: {{carbonoTotal}} kg CO₂</h2>
+        </div>
+
+        <!-- Seção: Créditos de Carbono -->
+        <div class="info-section">
+            <h3>🌱 O que são Créditos de Carbono?</h3>
+            <p>
+                Os <strong>Créditos de Carbono</strong> são certificados que representam o direito de emitir 
+                uma tonelada de dióxido de carbono (CO₂) equivalente. Eles são parte de um 
+                mecanismo de mercado criado para reduzir as emissões de gases de efeito estufa.
+            </p>
+
+            <div class="info-grid">
+                <div>
+                    <h4>💡 Como funcionam?</h4>
+                    <ul>
+                        <li><strong>1 crédito = 1 tonelada de CO₂</strong> que deixou de ser emitida</li>
+                        <li>Empresas que emitem menos podem vender créditos</li>
+                        <li>Empresas que emitem mais precisam comprar créditos</li>
+                        <li>Cria um incentivo financeiro para reduzir emissões</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>🎯 Objetivos</h4>
+                    <ul>
+                        <li>Reduzir emissões globais de GEE</li>
+                        <li>Incentivar projetos sustentáveis</li>
+                        <li>Promover desenvolvimento limpo</li>
+                        <li>Criar consciência ambiental corporativa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <p><strong>💚 Exemplo Prático:</strong></p>
+                <p>
+                    Se sua pegada de carbono é de <strong>{{carbonoTotal}} kg CO₂</strong> ({{ (carbonoTotal|float / 1000)|round(3) }} toneladas), 
+                    você poderia compensar comprando <strong>{{ (carbonoTotal|float / 1000)|round(3) }}</strong> créditos de carbono 
+                    para se tornar <strong>carbono neutro</strong>.
+                </p>
+            </div>
+
+            <p><strong>Tipos de projetos que geram créditos:</strong></p>
+            <ul>
+                <li>🌳 Reflorestamento e preservação florestal</li>
+                <li>💨 Energia renovável (solar, eólica, hidrelétrica)</li>
+                <li>🗑️ Gestão de resíduos e reciclagem</li>
+                <li>🚌 Transporte sustentável</li>
+                <li>🏭 Eficiência energética industrial</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
